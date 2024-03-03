@@ -10,8 +10,8 @@ import pages.CheckoutStepOnePage;
 import static com.codeborne.selenide.Condition.visible;
 import static java.time.Duration.ofSeconds;
 
-public class CheckoutPageOneSteps {
-    CheckoutStepOnePage checkoutStepOnePage = new CheckoutStepOnePage();
+public class CheckoutPageOneSteps extends BaseSteps{
+
 
     @Then("^User is on the checkout-step-one page$")
     public void userIsOnTheCheckoutStepOnePage() {

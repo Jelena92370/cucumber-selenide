@@ -1,7 +1,7 @@
 Feature: Sorting Items
 
   Background:
-    Given User opens Saucedemo Login page
+
     When User inputs "standard_user" to username field
     And inputs "secret_sauce" to password field
     When User pushes the Login button
@@ -26,3 +26,9 @@ Feature: Sorting Items
     When User clicks on Sorting Dropdown Icon
     And chooses option Price Low to High
     Then All items are sorted in the Price Low to High order
+
+  @SortingItemsByPriceHighToLow
+  Scenario: Sorting items by price High To Low
+    When User clicks on Sorting Dropdown Icon
+    And chooses option Price High To Low
+    Then All items are sorted in the Price High To Low order

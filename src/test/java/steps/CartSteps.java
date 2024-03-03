@@ -8,9 +8,9 @@ import cucumber.api.java.en.When;
 import pages.InventoryPage;
 import pages.ShoppingCartPage;
 
-public class CartSteps {
+public class CartSteps extends BaseSteps {
 
-    ShoppingCartPage shoppingCartPage = new ShoppingCartPage();
+
     @Then("^User is on the shopping cart page$")
     public void userIsOnTheShoppingCartPage() {
         shoppingCartPage.cardTitle.shouldHave(Condition.text("Your Cart"));

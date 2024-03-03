@@ -5,6 +5,7 @@ import com.codeborne.selenide.ElementsCollection;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.junit.Assert;
 import pages.InventoryPage;
 
 import java.util.ArrayList;
@@ -13,11 +14,12 @@ import java.util.List;
 
 import static com.codeborne.selenide.CollectionCondition.exactTexts;
 import static com.codeborne.selenide.CollectionCondition.size;
+import static com.codeborne.selenide.Condition.text;
 import static org.junit.Assert.assertEquals;
 
-public class SortingSteps {
+public class SortingSteps extends BaseSteps {
 
-    InventoryPage inventoryPage = new InventoryPage();
+
 
     @When("^User clicks on Sorting Dropdown Icon$")
     public void userClicksOnSortingDropdownIcon() {
@@ -79,25 +81,50 @@ inventoryPage.itemNames.shouldHave(exactTexts(sortedNames));
     @Then("^All items are sorted in the Price Low to High order$")
     public void allItemsAreSortedInThePriceLowToHighOrder() {
 
+        // Извлечение реальных цен и добавление их в список
         List<Double> prices = new ArrayList<>();
-
-
         for (int i = 0; i < inventoryPage.itemPrices.size(); i++) {
             String priceText = inventoryPage.itemPrices.get(i).getText().substring(1);
             double priceValue = Double.parseDouble(priceText);
             prices.add(priceValue);
         }
-        Collections.sort(prices);
-        List<String> pricesString = new ArrayList<>();
-        for (Double dbl: prices) {
-                        pricesString.add(dbl.toString());
 
+// Создание копии списка и сортировка его
+        List<Double> sortedPrices = new ArrayList<>(prices);
+        Collections.sort(sortedPrices);
 
+// Сравнение отсортированной копии с реальным списком
+        for (int i = 0; i < prices.size(); i++) {
+            inventoryPage.itemPrices.get(i).shouldHave(text(String.valueOf(sortedPrices.get(i))));
+        }
+    }
+
+    @And("^chooses option Price High To Low$")
+    public void choosesOptionPriceHighToLow() {
+        inventoryPage.optionPriceHightToLow.click();
+    }
+
+    @Then("^All items are sorted in the Price High To Low order$")
+    public void allItemsAreSortedInThePriceHighToLowOrder() {
+        // Извлечение реальных цен и добавление их в список
+        List<Double> prices = new ArrayList<>();
+        for (int i = 0; i < inventoryPage.itemPrices.size(); i++) {
+            String priceText = inventoryPage.itemPrices.get(i).getText().substring(1);
+            double priceValue = Double.parseDouble(priceText);
+            prices.add(priceValue);
         }
 
+// Создание копии списка и сортировка его
+        List<Double> sortedPricesReverse = new ArrayList<>(prices);
+        Collections.sort(sortedPricesReverse, Collections.reverseOrder());
 
-
-
-        inventoryPage.itemPrices.shouldHave(Texts(pricesString));;
+// Сравнение отсортированной копии с реальным списком
+        for (int i = 0; i < prices.size(); i++) {
+            inventoryPage.itemPrices.get(i).shouldHave(text(String.valueOf(sortedPricesReverse.get(i))));
+        }
     }
-}
+    }
+
+
+
+

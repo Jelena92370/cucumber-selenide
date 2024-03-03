@@ -15,9 +15,9 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.open;
 import static java.time.Duration.ofSeconds;
 
-public class LoginSteps {
+public class LoginSteps extends BaseSteps {
 
-    LoginPage loginPage = new LoginPage();
+
     @Given("^User opens Saucedemo Login page$")
     public void userOpensSaucedemoLoginPage() {
         open("https://www.saucedemo.com/");

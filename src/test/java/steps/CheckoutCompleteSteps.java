@@ -6,8 +6,8 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import pages.CheckoutCompletePage;
 
-public class CheckoutCompleteSteps {
-    CheckoutCompletePage checkoutCompletePage = new CheckoutCompletePage();
+public class CheckoutCompleteSteps extends BaseSteps {
+
 
     @Then("^User is on the checkout-complete page$")
     public void userIsOnTheCheckoutCompletePage() {

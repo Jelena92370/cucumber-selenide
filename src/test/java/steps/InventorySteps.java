@@ -9,9 +9,9 @@ import pages.InventoryPage;
 
 import static com.codeborne.selenide.Condition.visible;
 
-public class InventorySteps {
+public class InventorySteps extends BaseSteps {
 
-    InventoryPage inventoryPage = new InventoryPage();
+
 
     @Then("^User is on the page Inventory$")
     public void userIsOnThePageInventory() {

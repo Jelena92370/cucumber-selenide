@@ -1,7 +1,7 @@
 Feature: Checkout
 
   Background:
-    Given User opens Saucedemo Login page
+
     When User inputs "standard_user" to username field
     And inputs "secret_sauce" to password field
     When User pushes the Login button

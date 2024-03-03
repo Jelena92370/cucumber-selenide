@@ -1,7 +1,7 @@
+
+@Login
 Feature: Login
 
-  Background:
-    Given User opens Saucedemo Login page
 
   @validdata
   Scenario: Success login with valid data

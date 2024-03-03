@@ -6,8 +6,8 @@ import pages.CheckoutStepTwoPage;
 
 import static com.codeborne.selenide.Condition.visible;
 
-public class CheckoutPageTwoSteps {
-    CheckoutStepTwoPage checkoutStepTwoPage = new CheckoutStepTwoPage();
+public class CheckoutPageTwoSteps extends BaseSteps {
+
 
     @Then("^User is on the checkout-step-two page$")
     public void userIsOnTheCheckoutStepTwoPage() {
